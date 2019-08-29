@@ -9,7 +9,6 @@ $('#name').focus();
  const $payment = $('#payment');
  const $credit = $('option[value="credit card"]').attr('selected','selected');
  const $selectMethod = $('option[value="select_method"]').attr('disabled', 'disabled');
- const $activitie = $('.activities div');
  const $divP = $('div p').hide();
  const $button = $('button[type="submit"]');
 //variables javaScript
@@ -127,9 +126,9 @@ $isChecked.each(function (i) {
                 number -= 100;
             }
     }
+    const $activity = $('.activities div');
     
-    
-    $activitie.text(`Total: $${number}`);
+    $activity.text(`Total: $${number}`);
     
 
         }  )
@@ -232,18 +231,19 @@ function positiveOrNegative(){
 }
 
 //disable button if false
-$button.on('click',()=>{
+$('form[action="index.html"]').on('submit',()=>{
     
     
     if( $isChecked.is(':checked') && positiveOrNegative() && isNameValid(name.value) && isEmailValid(email.value)&& name.value !== '' ){
         if($isChecked.is(':checked')){
             $('.activities').first().css('color');
             }
-    return true;
+            return true;
 }  else {
     if(!$isChecked.is(':checked')){
     $('.activities').first().css('color', '#cc0033');
     }
+    $('.activities div').css('color','black');
     return false;
     
 }
